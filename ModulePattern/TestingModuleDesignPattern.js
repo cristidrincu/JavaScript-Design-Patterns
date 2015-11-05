@@ -6,6 +6,7 @@ for(var i = 0; i < 150000; i++) {
 
 var testingModule = basketModule;
 
+//Beginning Test
 testingModule.addItemsToBasket(testingALargeItemsArray);
 testingModule.removeItemFromBasket({name: 49000});
 testingModule.removeItemsFromBasket([{name: 3000}, {name: 30000}]);
