@@ -2,28 +2,38 @@ var basketModule = (function () {
     //private variables
     var basket = [];
 
-    function pvFindItemIndexInBasket(itemInBasket) {
-        basket.filter(function(item){
+    function pvFindItemInBasket(itemInBasket) {
+        return basket.filter(function(item){
             if(itemInBasket.name === item.name) {
                 return itemInBasket;
             }
         });
     }
 
-    function pvAddItemToBasket(itemsArray ,cb) {
+    function pvAddItemsToBasket(itemsArray) {
         itemsArray.forEach(function(item) {
             basket.push(item);
         });
 
-        cb(basket);
+        return basket;
     }
 
-    function pvRemoveItemFromBasket(itemName, cb) {
+    function pvRemoveItemFromBasket(itemInBasket) {
         basket = basket.filter(function(item) {
-            return item.name != itemName;
+            return item.name != itemInBasket.name;
         });
 
-        cb(basket);
+        return basket;
+    }
+
+    function pvRemoveItemsFromBasket(arrayOfItemsToBeRemoved) {
+        basket.forEach(function(itemInBasket){
+            arrayOfItemsToBeRemoved.forEach(function(itemToBeRemoved){
+                if(itemToBeRemoved.name === itemInBasket.name) {
+                    pvRemoveItemFromBasket(itemToBeRemoved);
+                }
+            });
+        });
     }
 
     function pvGetItemsInBasket() {
@@ -34,23 +44,10 @@ var basketModule = (function () {
 
     //public API
     return {
-        addItemToBasket: pvAddItemToBasket,
+        addItemsToBasket: pvAddItemsToBasket,
         removeItemFromBasket: pvRemoveItemFromBasket,
-        getAllItemsInBasket: pvGetItemsInBasket
+        removeItemsFromBasket: pvRemoveItemsFromBasket,
+        getAllItemsInBasket: pvGetItemsInBasket,
+        findItemInBasket: pvFindItemInBasket
     }
 }());
-
-var itemsArray = [
-    {name: 'Cristian'},
-    {name: 'Robert'},
-    {name: 'Flavius'},
-    {name: 'Dragos'}
-];
-basketModule.addItemToBasket(itemsArray, function() {
-    basketModule.getAllItemsInBasket()
-});
-
-basketModule.removeItemFromBasket('Robert', function() {
-    console.log('AFTER REMOVING AN ITEM!');
-    basketModule.getAllItemsInBasket();
-});
