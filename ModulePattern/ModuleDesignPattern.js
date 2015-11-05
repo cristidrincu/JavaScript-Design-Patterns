@@ -4,7 +4,7 @@ var basketModule = (function () {
 
     function pvFindItemInBasket(itemInBasket) {
         return basket.filter(function(item){
-            if(itemInBasket.name === item.name) {
+            if(itemInBasket.number === item.number) {
                 return itemInBasket;
             }
         });
@@ -20,7 +20,7 @@ var basketModule = (function () {
 
     function pvRemoveItemFromBasket(itemInBasket) {
         basket = basket.filter(function(item) {
-            return item.name != itemInBasket.name;
+            return item.number != itemInBasket.number;
         });
 
         return basket;
@@ -29,7 +29,7 @@ var basketModule = (function () {
     function pvRemoveItemsFromBasket(arrayOfItemsToBeRemoved) {
         basket.forEach(function(itemInBasket){
             arrayOfItemsToBeRemoved.forEach(function(itemToBeRemoved){
-                if(itemToBeRemoved.name === itemInBasket.name) {
+                if(itemToBeRemoved.number === itemInBasket.number) {
                     pvRemoveItemFromBasket(itemToBeRemoved);
                 }
             });
@@ -38,7 +38,7 @@ var basketModule = (function () {
 
     function pvGetItemsInBasket() {
         basket.forEach(function(item){
-            console.log(item.name);
+            console.log(item.number);
         });
     }
 
