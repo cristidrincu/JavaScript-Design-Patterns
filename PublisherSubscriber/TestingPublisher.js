@@ -1,3 +1,5 @@
-/**
- * Created by homeuser on 11/6/2015.
- */
+function handleLogin() {
+    console.log('A user is trying to log in!');
+}
+
+publisher.on('login.complete', handleLogin);

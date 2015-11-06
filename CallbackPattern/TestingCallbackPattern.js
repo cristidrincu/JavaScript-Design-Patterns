@@ -1,3 +1,3 @@
-/**
- * Created by homeuser on 11/6/2015.
- */
+var initialFunctionReference = initialFunction;
+initialFunctionReference.populateNumbers();
+initialFunctionReference.findElement({number: 5}, displayNumbers);
