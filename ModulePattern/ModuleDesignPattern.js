@@ -14,16 +14,12 @@ var basketModule = (function () {
         itemsArray.forEach(function(item) {
             basket.push(item);
         });
-
-        return basket;
     }
 
     function pvRemoveItemFromBasket(itemInBasket) {
         basket = basket.filter(function(item) {
             return item.number != itemInBasket.number;
         });
-
-        return basket;
     }
 
     function pvRemoveItemsFromBasket(arrayOfItemsToBeRemoved) {
