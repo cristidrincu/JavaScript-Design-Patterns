@@ -8,15 +8,15 @@ var initialFunction = (function(){
         }
     }
 
-    function pvFindElement(elementToBeFound, callbackDisplayNumbers) {
-        if(typeof callbackDisplayNumbers !== 'function') {
-            callbackDisplayNumbers = false;
+    function pvFindElement(elementToBeFound, fnCallbackDisplayNumbers) {
+        if(typeof fnCallbackDisplayNumbers !== 'function') {
+            fnCallbackDisplayNumbers = false;
         }
         elements.forEach(function(element) {
             if(element.number === elementToBeFound.number) {
                 elementIndex = elements.indexOf(element);
-                if(callbackDisplayNumbers) {
-                    callbackDisplayNumbers(elementToBeFound, elementIndex);
+                if(fnCallbackDisplayNumbers) {
+                    fnCallbackDisplayNumbers(elementToBeFound, elementIndex);
                 }
             }
         });
